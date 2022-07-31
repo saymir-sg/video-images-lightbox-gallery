@@ -6,23 +6,23 @@
         <img [src]="item.src" [alt]="item.alt" class="img-fluid" loading="lazy"/>
       </ng-container>
       <ng-container *ngIf="item.type === 'video'">
-        <video controls>
-          <source [src]="item.src" type="video/mp4" />
+        <video controls preload="auto">
+          <source [src]="item.src" type="video/{{item.videoType}}" />
           Your browser does not support the video tag.
         </video>
       </ng-container>
     </div>
   </ng-container>
 </div>
-<!-- <div class="lightbox" *ngIf="showMask">
-  <span class="count text-white">{{(currentIndex + 1) + '/' + totalItemsCount}}</span>
-  <button class="close-btn text-white" (click)="onClosePreview()">
+<div class="lightbox" *ngIf="showMask" animation-leave>
+  <span *ngIf="showCount" class="count text-white">{{(currentIndex + 1) + '/' + totalItemsCount}}</span>
+  <button class="close-btn text-white" (click)="onClosePreview()" title="Close">
     <i class="fa-solid fa-xmark"></i>
   </button>
-  <button *ngIf="controls" class="btn-lighbox-carousel btn-prev text-white">
+  <button *ngIf="controls" class="btn-lighbox-carousel btn-prev text-white" (click)="onPrev()" title="Prev">
     <i class="fa-solid fa-arrow-left"></i>
   </button>
-  <button *ngIf="controls" class="btn-lighbox-carousel btn-next text-white">
+  <button *ngIf="controls" class="btn-lighbox-carousel btn-next text-white" (click)="onNext()" title="Next">
     <i class="fa-solid fa-arrow-right"></i>
   </button>
   <div class="lighbox-item" *ngIf="previewVisible"
@@ -30,13 +30,13 @@
   (@animation.done)="onAnimationEnd($event)"
   >
     <img *ngIf="currentLightboxItem.type === 'image'"
-     [src]="currentLightboxItem.src" [alt]="currentLightboxItem.alt" />
+     [src]="currentLightboxItem.src" [alt]="currentLightboxItem.alt" loading="lazy" />
      <ng-container *ngIf="currentLightboxItem.type === 'video'">
         <video controls>
-          <source [src]="currentLightboxItem.src" type="video/mp4" />
+          <source [src]="currentLightboxItem.src" type="video/{{currentLightboxItem.videoType}}" />
           Your browser does not support the video tag.
         </video>
       </ng-container>
   </div>
-</div> -->
+</div>
 </div>

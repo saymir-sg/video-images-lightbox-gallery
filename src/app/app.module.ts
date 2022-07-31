@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LightboxComponent } from './lightbox/lightbox.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule ],
   declarations: [ AppComponent, LightboxComponent ],
   bootstrap:    [ AppComponent ]
 })
