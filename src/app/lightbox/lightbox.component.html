@@ -1,0 +1,42 @@
+<div class="lightbox-gallery-container">
+<div class="gallery">
+  <ng-container *ngFor="let item of galleryData; let i = index;">
+    <div class="gallery-item" [ngStyle]="{'width': slidesToShow ? (100 / slidesToShow + '%' ) : ''}" (click)="previewGalleryItem(i)">
+      <ng-container *ngIf="item.type === 'image'">
+        <img [src]="item.src" [alt]="item.alt" class="img-fluid" loading="lazy"/>
+      </ng-container>
+      <ng-container *ngIf="item.type === 'video'">
+        <video controls>
+          <source [src]="item.src" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<!-- <div class="lightbox" *ngIf="showMask">
+  <span class="count text-white">{{(currentIndex + 1) + '/' + totalItemsCount}}</span>
+  <button class="close-btn text-white" (click)="onClosePreview()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <button *ngIf="controls" class="btn-lighbox-carousel btn-prev text-white">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+  <button *ngIf="controls" class="btn-lighbox-carousel btn-next text-white">
+    <i class="fa-solid fa-arrow-right"></i>
+  </button>
+  <div class="lighbox-item" *ngIf="previewVisible"
+  [@animation]="{value: 'visible'}"
+  (@animation.done)="onAnimationEnd($event)"
+  >
+    <img *ngIf="currentLightboxItem.type === 'image'"
+     [src]="currentLightboxItem.src" [alt]="currentLightboxItem.alt" />
+     <ng-container *ngIf="currentLightboxItem.type === 'video'">
+        <video controls>
+          <source [src]="currentLightboxItem.src" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </ng-container>
+  </div>
+</div> -->
+</div>

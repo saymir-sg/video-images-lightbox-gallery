@@ -1,14 +1,1 @@
-<div class="card-wrapper">
-  <div class="card" *ngFor="let item of gallery; let i = index">
-    <div class="card-inner">
-      <img [src]="item.path" class="img-fluid"/>
-    </div>
-  </div>
-</div>
-
-
-<!-- <video width="320" height="240" controls>
-  <source src="movie.mp4" type="video/mp4" />
-  <source src="movie.ogg" type="video/ogg" />
-  Your browser does not support the video tag.
-</video> -->
+<app-lightbox-gallery [galleryData]="gallery" [slidesToShow]="3"></app-lightbox-gallery>

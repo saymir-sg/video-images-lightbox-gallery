@@ -9,11 +9,18 @@ export class AppComponent {
   gallery = [
     {
       type: 'image',
-      path: 'https://img.freepik.com/free-vector/javascript-frameworks-concept-illustration_114360-743.jpg'
+      src: 'https://img.freepik.com/free-vector/javascript-frameworks-concept-illustration_114360-743.jpg',
+      alt: 'JPG Image'
     },
     {
       type: 'image',
-      path: 'https://img.freepik.com/free-vector/java-developer-smartphone-software-javascript-coding-writing-application-css-programming-html-source-code-tampering-mobile-program-vector-isolated-concept-metaphor-illustration_335657-4297.jpg'
+      src: 'https://img.freepik.com/free-vector/java-developer-smartphone-software-javascript-coding-writing-application-css-programming-html-source-code-tampering-mobile-program-vector-isolated-concept-metaphor-illustration_335657-4297.jpg',
+      alt: 'JPG Image 2'
+    },
+    {
+      type: 'video',
+      src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+      alt: '',
     }
   ];
 
