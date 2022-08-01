@@ -30,12 +30,6 @@ export class AppComponent {
     },
     {
       type: 'video',
-      src: 'https://www.w3schools.com/html/mov_bbb.3gp',
-      alt: '',
-      videoType: '3gp'
-    },
-    {
-      type: 'video',
       src: 'https://www.w3schools.com/html/movie.ogg',
       alt: '',
       videoType: 'ogg'

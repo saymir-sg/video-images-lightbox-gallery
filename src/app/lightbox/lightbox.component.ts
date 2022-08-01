@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger, AnimationEvent } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
 
 interface Item {
   type: string;
@@ -45,10 +45,12 @@ export class LightboxComponent implements OnInit  {
   controls = true;
   totalItemsCount = 0;
   elem: any;
+  isFullScreen: boolean;
   constructor(@Inject(DOCUMENT) private document: any) {}
 
   ngOnInit(){
     this.totalItemsCount = this.galleryData.length;
+    this.chkScreenMode();
     this.elem = document.documentElement;
   }
 
@@ -83,6 +85,23 @@ export class LightboxComponent implements OnInit  {
       this.currentIndex = 0;
     }
     this.currentLightboxItem = this.galleryData[this.currentIndex];
+  }
+
+  @HostListener('document:fullscreenchange', ['$event'])
+  @HostListener('document:webkitfullscreenchange', ['$event'])
+  @HostListener('document:mozfullscreenchange', ['$event'])
+  @HostListener('document:MSFullscreenChange', ['$event'])
+
+  fullscreenmodes(event){
+    this.chkScreenMode();
+  }
+
+  chkScreenMode(){
+    if(document.fullscreenElement){
+      this.isFullScreen = true;
+    }else{
+      this.isFullScreen = false;
+    }
   }
 
   openFullscreen() {
