@@ -6,7 +6,7 @@
         <img [src]="item.src" [alt]="item.alt" class="img-fluid" loading="lazy"/>
       </ng-container>
       <ng-container *ngIf="item.type === 'video'">
-        <video preload="auto">
+        <video controls preload="auto" controlsList="nodownload nofullscreen noremoteplayback">
           <source [src]="item.src" type="video/{{item.videoType}}" />
           Your browser does not support the video tag.
         </video>
