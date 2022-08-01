@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger, AnimationEvent } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 
 interface Item {
   type: string;
@@ -43,11 +44,12 @@ export class LightboxComponent implements OnInit  {
   currentLightboxItem: Item = this.galleryData[0];
   controls = true;
   totalItemsCount = 0;
-
-  constructor() {}
+  elem: any;
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
   ngOnInit(){
     this.totalItemsCount = this.galleryData.length;
+    this.elem = document.documentElement;
   }
 
   previewGalleryItem(index: number) {
@@ -81,6 +83,30 @@ export class LightboxComponent implements OnInit  {
       this.currentIndex = 0;
     }
     this.currentLightboxItem = this.galleryData[this.currentIndex];
+  }
+
+  openFullscreen() {
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen) {
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen) {
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen) {
+      this.elem.msRequestFullscreen();
+    }
+  }
+
+  closeFullscreen() {
+    if (this.document.exitFullscreen) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen) {
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen) {
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen) {
+      this.document.msExitFullscreen();
+    }
   }
   
 }

@@ -6,7 +6,7 @@
         <img [src]="item.src" [alt]="item.alt" class="img-fluid" loading="lazy"/>
       </ng-container>
       <ng-container *ngIf="item.type === 'video'">
-        <video controls preload="auto">
+        <video preload="auto">
           <source [src]="item.src" type="video/{{item.videoType}}" />
           Your browser does not support the video tag.
         </video>
@@ -16,9 +16,14 @@
 </div>
 <div class="lightbox" *ngIf="showMask" animation-leave>
   <span *ngIf="showCount" class="count text-white">{{(currentIndex + 1) + '/' + totalItemsCount}}</span>
-  <button class="close-btn text-white" (click)="onClosePreview()" title="Close">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
+  <div class="right-toolbar">
+    <button class="full-screen" title="Full Screen" (click)="openFullscreen()">
+      <svg width="20px" height="20px" viewBox="0 0 18 18"><path class="fslightbox-svg-path" d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"></path></svg>
+    </button>
+    <button class="close-btn text-white" (click)="onClosePreview()" title="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
   <button *ngIf="controls" class="btn-lighbox-carousel btn-prev text-white" (click)="onPrev()" title="Prev">
     <i class="fa-solid fa-arrow-left"></i>
   </button>
